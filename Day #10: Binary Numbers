@@ -1,0 +1,44 @@
+"""
+Given a base-10 integer, n, convert it to binary (base-2). Then find and print the base-10 integer 
+denoting the maximum number of consecutive 1's in n's binary representation.
+
+Example Input:
+  5
+  
+Example Output:
+  1
+"""
+
+
+def countConsecutiveOnes(bin_n):
+    max_ones = 0
+    current_ones = 0
+    for i in bin_n:
+        if i ==1:
+            current_ones += 1
+        else:
+            max_ones = max(max_ones, current_ones)
+            current_ones = 0
+    max_ones = max(max_ones, current_ones)
+    return max_ones       
+        
+
+def convertToBinary(n):
+    bin_n = []
+    while n > 0:
+        remainder = n % 2
+        n = int(n / 2)
+        
+        bin_n.insert(0, remainder)
+    return bin_n
+
+if __name__ == '__main__':
+    n = int(input())
+    
+    #convert n to binary
+    bin_n = convertToBinary(n)
+    
+    #count consectutive 1's
+    max_ones = countConsecutiveOnes(bin_n)
+    print(max_ones)
+    
