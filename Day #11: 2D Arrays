@@ -1,0 +1,51 @@
+"""
+Calculate the hourglass sum for every hourglass in A, then print the maximum hourglass sum.
+
+Hourglass format:
+  a b c
+    d
+  e f g
+
+Input Format:
+  There are 6 lines of input, where each line contains 6 space-separated integers describing 2D Array A;
+  every value in A will be in the inclusive range of -9 to 9.
+  
+Example Input: row = 6, columns = 6
+  1 1 1 0 0 0
+  0 1 0 0 0 0
+  1 1 1 0 0 0
+  0 0 2 4 4 0
+  0 0 0 2 0 0
+  0 0 1 2 4 0
+  
+Example Output:
+  19
+  
+(Not printed)
+  2 4 4
+    2
+  1 2 4
+
+"""
+
+
+
+if __name__ == '__main__':
+    arr = []
+
+    for _ in range(6):
+        arr.append(list(map(int, input().rstrip().split())))
+
+    max_sum = -10
+    current_sum = -10
+    
+    for row in range(4):
+        for col in range(4):
+            current_sum = arr[row + 1][col + 1]
+            for k in range(3):
+                current_sum += arr[row][col + k] + arr[row + 2][col + k]
+            if current_sum > max_sum:
+                max_sum = current_sum
+    
+    print(max_sum)
+            
