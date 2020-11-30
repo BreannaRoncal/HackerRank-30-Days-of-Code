@@ -1,0 +1,44 @@
+"""
+Implement Bubble Sort
+
+Given an array, a, of size n distinct elements, sort the array in ascending order using the Bubble Sort algorithm 
+above. Once sorted, print the following 3 lines:
+  1. Array is sorted in numSwaps swaps. Where "numSwaps" is the number of swaps that took place.
+  2. First Element: firstElement where "firstElement" is the first element in the sorted array.
+  3. Last Element: lastElement where "lastElement" is the last element in the sorted array.
+  
+Example Input:
+  3
+  3 2 1
+  
+Example Output:
+  Array is sorted in 3 swaps.
+  First Element: 1
+  Last Element: 3
+"""
+
+
+n = int(input().strip())
+a = list(map(int, input().strip().split(' ')))
+# Write Your Code Here
+numSwapsTotal = 0
+firstElement = 0
+lastElement = 0
+
+#iterate through array
+for i in range(n):
+    numSwaps = 0
+    #iterate through array and compare/swap
+    for j in range(0, n - 1):
+        if a[j] > a[j + 1]:
+            a[j], a[j + 1] = a[j + 1], a[j]
+            numSwaps += 1
+            numSwapsTotal += 1
+    #break if no numbers were swapped
+    #if numSwaps == 0:
+    #   break
+            
+print("Array is sorted in", numSwapsTotal, "swaps.")
+print("First Element:", a[0])
+print("Last Element:", a[n- 1])
+    
